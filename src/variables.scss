@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+@import "./theme.scss";
+@import "./palette.scss";
+
+@include mat.core();
+
+$primary: mat.get-color-from-palette($primary-palette, 500);
+$accent: mat.get-color-from-palette($accent-palette, 500);
