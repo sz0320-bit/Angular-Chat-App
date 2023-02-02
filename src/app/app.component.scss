@@ -38,7 +38,9 @@
 .container {
   min-width: 250px;
   max-width: 250px;
-  @apply overflow-x-hidden rounded-2xl bg-[#1f1f1f] border-2 border-neutral-800 min-h-full flex flex-col items-center shadow-2xl  ;
+  border-color: $accent;
+  background-color: $primary;
+  @apply overflow-x-hidden rounded-2xl  border-r-2 min-h-full flex flex-col items-center shadow-2xl  ;
 }
 
 .option {

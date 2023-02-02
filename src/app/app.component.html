@@ -1,35 +1,45 @@
 <div class="app-container  flex flex-col">
 
-  <div class="w-full h-fit toolbar">
-    <mat-toolbar color="primary">
-      <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>Angular Chat App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>settings</mat-icon>
-      </button>
-    </mat-toolbar>
-  </div>
+  <div *ngIf="user$ | async; else nonAuthView" class="w-full h-full bg-transparent">
+    <div class="w-full h-fit toolbar">
+      <mat-toolbar color="primary">
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>Angular Chat App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+          <mat-icon>share</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>settings</mat-icon>
+        </button>
+        <button mat-icon-button (click)="logout()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+    </div>
+    <mat-drawer-container class="page ">
+      <mat-drawer class="container overflow-x-hidden"  #drawer
+                  [mode]="getScreenWidth < 600 ? 'over' : 'side'">
+        <mat-list>
+        </mat-list>
+      </mat-drawer>
 
-
-  <mat-drawer-container class="page ">
-    <mat-drawer class="container overflow-x-hidden"  #drawer
-                [mode]="getScreenWidth < 600 ? 'over' : 'side'">
-      <mat-list>
-      </mat-list>
-    </mat-drawer>
-
-    <mat-drawer-content>
+      <mat-drawer-content>
 
         <div class="page-container">
           <router-outlet></router-outlet>
         </div>
-    </mat-drawer-content>
-  </mat-drawer-container>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+
+
+
+
+  <ng-template #nonAuthView>
+    <router-outlet></router-outlet>
+  </ng-template>
 
 </div>

@@ -11,10 +11,14 @@ import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatTabsModule} from "@angular/material/tabs";
+import { StoreModule } from '@ngrx/store';
+import * as fromGlobal from './reducers/index';
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     CommonModule,
@@ -24,12 +28,14 @@ import {MatTabsModule} from "@angular/material/tabs";
     LayoutModule,
     RouterModule,
     AppRoutingModule,
+    StoreModule.forRoot(fromGlobal.reducers, { metaReducers: fromGlobal.metaReducers , }),
+    StoreDevtoolsModule.instrument(),
     HttpClientModule,
     MatNativeDateModule,
     MatTabsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
