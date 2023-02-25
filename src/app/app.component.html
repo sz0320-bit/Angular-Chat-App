@@ -1,8 +1,8 @@
-<div class="app-container  flex flex-col">
+<div class="h-full w-full">
 
-  <div *ngIf="user$ | async; else nonAuthView" class="w-full h-full bg-transparent">
-    <div class="w-full h-fit toolbar">
-      <mat-toolbar color="primary">
+  <div *ngIf="user$ | async; else nonAuthView" class="w-full  flex-col flex h-full bg-neutral-800 ">
+    <div class="w-full h-[5em] toolbar">
+      <mat-toolbar color="primary" class="min-h-full">
         <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
           <mat-icon>menu</mat-icon>
         </button>
@@ -18,21 +18,27 @@
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
+
+
+
     </div>
-    <mat-drawer-container class="page ">
-      <mat-drawer class="container overflow-x-hidden"  #drawer
+    <mat-drawer-container class=" h-full drawer-maincontainer ">
+      <mat-drawer class="drawer-class p-5  "  #drawer
                   [mode]="getScreenWidth < 600 ? 'over' : 'side'">
-        <mat-list>
-        </mat-list>
+        <div class="container">
+
+        </div>
       </mat-drawer>
 
-      <mat-drawer-content>
+      <mat-drawer-content class="">
 
-        <div class="page-container">
+        <div class="w-full bg-neutral-800 p-5 h-full">
           <router-outlet></router-outlet>
         </div>
       </mat-drawer-content>
     </mat-drawer-container>
+
+
   </div>
 
 
@@ -43,3 +49,4 @@
   </ng-template>
 
 </div>
+

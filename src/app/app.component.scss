@@ -1,14 +1,12 @@
 @import "../variables.scss";
 
 .app-container {
-  position: absolute;
-  display: flex;
-  /* background-color: #F5F5F5; */
-  flex-direction: column;
-  width: 100%;
-  @apply bg-neutral-800 overflow-hidden h-full;
+  @apply flex flex-col h-full border-4 border-red-600 w-full  ;
 }
 
+.page {
+  @apply flex min-h-fit w-full max-w-full bg-neutral-800 border-4;
+}
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -24,24 +22,36 @@
 .page-container {
   display: flex;
   width: 100%;
-  @apply bg-neutral-800 overflow-x-hidden h-full ;
+  @apply bg-neutral-800 overflow-x-hidden min-h-full ;
+}
+
+.router-container {
+  @apply flex min-w-full h-full bg-neutral-800 p-5;
 }
 
 
-
-.page {
-  @apply w-full h-full min-h-fit bg-transparent m-2;
+.main{
+  min-height: 100vh;
+  @apply bg-transparent w-full;
 }
 
-
+.mat-drawer{
+  background-color: transparent;
+  border: none;
+}
 
 .container {
-  min-width: 250px;
-  max-width: 250px;
   border-color: $accent;
   background-color: $primary;
-  @apply overflow-x-hidden rounded-2xl  border-r-2 min-h-full flex flex-col items-center shadow-2xl  ;
+  width: calc(300px + 1.5em);
+  @apply overflow-x-hidden rounded-2xl min-h-full  border-2  flex flex-col items-center shadow-2xl  ;
 }
+
+.drawer-maincontainer{
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity));
+
+}
+
 
 .option {
   display: flex;
@@ -72,6 +82,9 @@
   color: #fcaf10;
   border-left: solid 5px #fcaf10;
 }
+
+
+
 
 .sub-option {
   margin-left: 20px;
