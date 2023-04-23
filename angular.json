@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "chat-app:build:production",
+            "firebaseProject": "react-chat-c6ed0",
+            "firebaseHostingSite": "react-chat-c6ed0"
+          }
         }
       }
     }

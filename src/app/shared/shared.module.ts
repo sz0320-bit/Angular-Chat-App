@@ -27,6 +27,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
+import {MatProgressBar, MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
+    MatProgressBarModule,
     MatRippleModule,
     MatMenuModule,
     MatFormFieldModule,
@@ -70,6 +72,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     RouterModule,
     MatSidenavModule,
     MatDatepickerModule,
+    MatProgressBarModule,
     MatTabsModule,
     MatNativeDateModule,
     MatDatepickerModule,

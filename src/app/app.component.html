@@ -1,31 +1,35 @@
 <div class="h-full w-full">
 
-  <div *ngIf="user$ | async; else nonAuthView" class="w-full  flex-col flex h-full bg-neutral-800 ">
+  <div *ngIf="(user$ | async); else nonAuthView" class="w-full  flex-col flex h-full bg-neutral-800 ">
     <div class="w-full h-[5em] toolbar">
       <mat-toolbar color="primary" class="min-h-full">
-        <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
+                aria-label="Example icon-button with menu icon">
           <mat-icon>menu</mat-icon>
         </button>
-        <span>Angular Chat App</span>
+
+        <button [routerLink]="['/main']"><span>Angular/Express Demo</span></button>
+
         <span class="example-spacer"></span>
+
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
           <mat-icon>share</mat-icon>
         </button>
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
           <mat-icon>settings</mat-icon>
         </button>
-        <button mat-icon-button (click)="logout()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <button mat-icon-button (click)="logout()" class="example-icon favorite-icon"
+                aria-label="Example icon-button with heart icon">
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
 
 
-
     </div>
     <mat-drawer-container class=" h-full drawer-maincontainer ">
-      <mat-drawer class="drawer-class p-5  "  #drawer
+      <mat-drawer class="drawer-class  p-5 pr-0  " #drawer
                   [mode]="getScreenWidth < 600 ? 'over' : 'side'">
-        <div class="container">
+        <div class="container mat-elevation-z8">
 
         </div>
       </mat-drawer>
@@ -40,8 +44,6 @@
 
 
   </div>
-
-
 
 
   <ng-template #nonAuthView>

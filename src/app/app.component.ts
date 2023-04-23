@@ -3,8 +3,7 @@ import {getUserState, State} from "./reducers";
 import {Store} from "@ngrx/store";
 import {setUser} from "./reducers/user-reducer/user.actions";
 import {Router} from "@angular/router";
-import {SupabaseService} from "./services/supabase.service";
-import {coerceStringArray} from "@angular/cdk/coercion";
+
 
 @Component({
   selector: 'app-root',
@@ -20,10 +19,10 @@ export class AppComponent implements OnInit{
   user$ = this.store.select(getUserState)
 
 
-  constructor(private store: Store<State>, private router: Router, private supabase: SupabaseService) {
+  constructor(private store: Store<State>, private router: Router) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
 
 
 
@@ -31,10 +30,13 @@ export class AppComponent implements OnInit{
     this.getScreenHeight = window.innerHeight;
 
 
+    const user = localStorage.getItem('user');
 
-    this.supabase.authChanges((_, session) => {
-      this.store.dispatch(setUser({user: session.user}))
-    })
+    if(user){
+      this.store.dispatch(setUser({User: JSON.parse(user)}))
+    }
+
+
 
 
   }
@@ -47,9 +49,8 @@ export class AppComponent implements OnInit{
 
 
   logout() {
-    this.store.dispatch(setUser({user: null}));
+    this.store.dispatch(setUser({User: null}));
     localStorage.clear();
-    this.supabase.signOut();
     this.router.navigate(['/login'])
   }
 

@@ -5,17 +5,17 @@ import * as UserActions from './user.actions';
 export const userFeatureKey = 'user';
 
 export interface State {
-  user: User | null
+  User: User | null
 }
 
 export const initialState: State = {
-  user: null
+  User: null
 };
 
 export const reducer = createReducer(
   initialState,
-  on(UserActions.setUser, (state, {user}) => ({
+  on(UserActions.setUser, (state, {User}) => ({
     ...state,
-    user
+    User
   })),
 );

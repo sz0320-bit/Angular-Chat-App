@@ -9,7 +9,7 @@ $accent-palette: mat.define-palette($md-secondary, 500);
 // The "warn" palette is optional and defaults to red if not specified.
 $warn-palette: mat.define-palette(mat.$red-palette);
 
-$theme: mat.define-light-theme((
+$theme: mat.define-dark-theme((
  color: (
    primary: $primary-palette,
    accent: $accent-palette,
@@ -18,5 +18,16 @@ $theme: mat.define-light-theme((
  typography: mat.define-typography-config(),
  density: 0,
 ));
+
+$custom-dark-theme: mat.define-dark-theme($md-primary, 500);
+
+$custom-dark-theme-overrides: (
+  'MatFormField': (
+    'background': map_get($custom-dark-theme, 'background'),
+    'color': map_get($custom-dark-theme, 'foreground'),
+  )
+);
+
+$custom-dark-theme: map_merge($custom-dark-theme, $custom-dark-theme-overrides);
 
 @include mat.all-component-themes($theme);

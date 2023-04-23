@@ -1,0 +1,44 @@
+<div class="page">
+  <div [formGroup]="signUpForm" class="main-card">
+    <div class="w-full flex flex-col p-3 gap-3 justify-center">
+      <div class="w-full  h-[12em] p-[-1em] flex justify-center gap-3 items-center">
+        <img src="../../assets/angular-logo.svg" class="logo ml-[-1em] w-[11.2em] h-[11.2em]" alt="logo">
+        <img src="../../assets/node-logo.svg" class="logo w-[9.2em] h-[9.2em]" alt="logo">
+      </div>
+      <mat-form-field class="field">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Username</mat-label>
+        <input type="username" matInput formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field class="field">
+        <mat-label>Password</mat-label>
+        <input [type]="!showPass ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="showPass = !showPass">
+          <mat-icon>{{ showPass ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+          <div *ngIf="signUpForm.get('password').errors['required']">Password is required</div>
+          <div *ngIf="signUpForm.get('password').errors['minLength']">Password needs to be at least 5 characters long</div>
+          <div *ngIf="signUpForm.get('password').errors['pattern']">Password needs one number and one special character</div>
+        </mat-error>
+      </mat-form-field>
+
+      <button class="mt-3" [disabled]="!signUpForm.valid" mat-raised-button color="accent" (click)="register()">
+        <span>Sign Up</span>
+      </button>
+
+      <mat-progress-bar [ngClass]="!loading && 'invisible'" mode="indeterminate" color="accent"></mat-progress-bar>
+
+      <span class="mat-typography text-white text-center">Already have an account?
+          <a [routerLink]="'/login'" style="cursor: pointer" class="mat-typography sign-up">
+            Sign In
+         </a>
+    </span>
+    </div>
+  </div>
+</div>

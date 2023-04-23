@@ -1,7 +1,32 @@
 <div class="page">
-  <div class="main-card">
-    <button mat-raised-button color="accent" (click)="login()">
-      <span>Sign In With Google</span>
-    </button>
+  <div [formGroup]="loginForm" class="main-card">
+    <div class="w-full flex flex-col p-3 gap-3 justify-center">
+      <div class="w-full  h-[12em] p-[-1em] flex justify-center gap-3 items-center">
+        <img src="../../assets/angular-logo.svg" class="logo ml-[-1em] w-[11.2em] h-[11.2em]" alt="logo">
+        <img src="../../assets/node-logo.svg" class="logo w-[9.2em] h-[9.2em]" alt="logo">
+      </div>
+      <mat-form-field class="field">
+        <mat-label>username</mat-label>
+        <input type="username" matInput formControlName="username">
+      </mat-form-field>
+      <mat-form-field class="field">
+        <mat-label>password</mat-label>
+        <input [type]="!showPass ? 'password' : 'text'" matInput formControlName="password">
+        <button mat-icon-button matSuffix (click)="showPass = !showPass">
+          <mat-icon>{{ showPass ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button [disabled]="!loginForm.valid" mat-raised-button color="accent" (click)="login()">
+        <span>Sign In</span>
+      </button>
+
+      <mat-progress-bar [ngClass]="!loading && 'invisible'" mode="indeterminate" color="accent"></mat-progress-bar>
+
+      <span class="mat-typography text-white text-center">Don't have an account yet?
+          <a [routerLink]="'/signup'" style="cursor: pointer" class="mat-typography sign-up">
+            Sign Up
+         </a>
+    </span>
+    </div>
   </div>
 </div>

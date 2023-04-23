@@ -16,7 +16,7 @@ export const userState = createFeatureSelector<user.State>(user.userFeatureKey);
 
 export const getUserState = createSelector(
   userState,
-  state => state.user
+  state => state.User
 )
 
 export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];
