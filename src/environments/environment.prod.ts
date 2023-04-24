@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'localhost:3000'
+  apiUrl: 'https://express-test-demo-d2vim2usda-uc.a.run.app'
 };
