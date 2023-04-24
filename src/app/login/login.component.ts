@@ -47,21 +47,25 @@ export class LoginComponent implements OnInit{
       .subscribe({
         next: result => {
           this.loading = false;
-          if (result.access_token) {
+          if (result.body.access_token) {
             this.loginForm.reset();
             this.loginForm.markAsPristine();
-            this.store.dispatch(setUser({User: result.user}));
-            localStorage.setItem('accessToken', result.access_token);
-            localStorage.setItem('user', JSON.stringify(result.user));
-            localStorage.setItem('refreshToken', result.refresh_token);
-            localStorage.setItem('refresh_in', result.refresh_in);
-            localStorage.setItem('expires_in', result.expires_in);
+            this.store.dispatch(setUser({User: result.body.user}));
+            localStorage.setItem('accessToken', result.body.access_token);
+            localStorage.setItem('user', JSON.stringify(result.body.user));
+            localStorage.setItem('refreshToken', result.body.refresh_token);
+            localStorage.setItem('refresh_in', result.body.refresh_in);
+            localStorage.setItem('expires_in', result.body.expires_in);
             this.router.navigate(['/']);
           }
         },
-        error: () => {
+        error: result => {
           this.loading = false;
-          this.snackbar.open('There was an error logging you in, please retry', 'dismiss', {duration: 3000})
+          if(result.status === 401){
+            this.snackbar.open('Invalid Credentials!', 'dismiss', {duration: 3000})
+          }else{
+            this.snackbar.open('There was an error logging you in, please retry', 'dismiss', {duration: 3000})
+          }
         }
       });
   }

@@ -8,7 +8,7 @@
           <mat-icon>menu</mat-icon>
         </button>
 
-        <button [routerLink]="['/main']"><span>Angular/Express Demo</span></button>
+        <button [routerLink]="['/main']"><span>{{getScreenWidth > 500 ? 'Angular / Express Demo' : 'A/E Demo'}}</span></button>
 
         <span class="example-spacer"></span>
 
@@ -27,16 +27,16 @@
 
     </div>
     <mat-drawer-container class=" h-full drawer-maincontainer ">
-      <mat-drawer class="drawer-class  p-5 pr-0  " #drawer
+      <mat-drawer class="drawer-class  p-2 pr-0  " #drawer
                   [mode]="getScreenWidth < 600 ? 'over' : 'side'">
-        <div class="container mat-elevation-z8">
+        <div class="container ">
 
         </div>
       </mat-drawer>
 
       <mat-drawer-content class="">
 
-        <div class="w-full bg-neutral-800 p-5 h-full">
+        <div class="w-full bg-neutral-800 p-2 h-full">
           <router-outlet></router-outlet>
         </div>
       </mat-drawer-content>

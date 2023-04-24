@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpResponse} from "@angular/common/http";
 import {LoginResponse} from "../models/login-response";
 import {Observable} from "rxjs";
 import {RegisterResponse} from "../models/register-response";
@@ -16,8 +16,8 @@ export class AuthService {
   constructor(private http: HttpClient) {
   }
 
-  login(credentials: {username: string, password: string}): Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, credentials);
+  login(credentials: {username: string, password: string}): Observable<HttpResponse<LoginResponse>>{
+    return this.http.post<LoginResponse>(`${this.baseUrl}/login`, credentials, {observe: "response"});
   }
 
   register(credentials: {username: string, password: string, email: string}): Observable<RegisterResponse>{

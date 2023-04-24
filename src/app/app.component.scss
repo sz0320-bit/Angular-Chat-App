@@ -44,7 +44,7 @@
   border-color: $accent;
   background-color: $primary;
   width: calc(300px + 1.5em);
-  @apply overflow-x-hidden rounded-2xl min-h-full  border-2  flex flex-col items-center shadow-2xl  ;
+  @apply overflow-x-hidden rounded-2xl min-h-full  border-2  flex flex-col items-center   ;
 }
 
 .drawer-maincontainer{
