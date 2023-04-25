@@ -23,8 +23,8 @@
         </button>
         <mat-error *ngIf="signUpForm.get('password').invalid && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
           <div *ngIf="signUpForm.get('password').errors['required']">Password is required</div>
-          <div *ngIf="signUpForm.get('password').errors['minLength']">Password needs to be at least 5 characters long</div>
-          <div *ngIf="signUpForm.get('password').errors['pattern']">Password needs one number and one special character</div>
+          <div *ngIf="signUpForm.get('password').errors['minlength']">Needs to be at least 5 characters</div>
+          <div *ngIf="signUpForm.get('password').errors['pattern'] && !signUpForm.get('password').errors['minlength']">Needs a number & a special character</div>
         </mat-error>
       </mat-form-field>
 
