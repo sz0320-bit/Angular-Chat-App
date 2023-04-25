@@ -29,12 +29,45 @@ export class AppComponent implements OnInit{
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
 
+    // const localExpirationTime = localStorage.getItem('expirationTime');
+    // const expirationTime = new Date(localExpirationTime);
+    // if (localExpirationTime) {
+    //   // console.log('exp', expirationTime);
+    //   const currentTime = Date.now();
+    //   const remainingTime = (expirationTime.getTime() - currentTime) / 1000;
+    //
+    //   if (remainingTime <= 0) {
+    //     // console.log('checker');
+    //     this.snackbar.open('Session Expired, Please Login Again', 'dismiss');
+    //     this.logout();
+    //   } else {
+    //     // console.log(remainingTime);
+    //
+    //     this.startSessionExpiryCountdown(remainingTime);
+    //   }
+    // }
+
+    const accessExpireTime = localStorage.getItem('refresh_in');
+    const refreshExpireTime = localStorage.getItem('expires_in');
+
+    if(accessExpireTime && refreshExpireTime){
+      const access = new Date(accessExpireTime);
+      const refresh = new Date(refreshExpireTime);
+      const remainingTime = (access.getTime() - Date.now()) / 1000;
+      const expireTime = (refresh.getTime() - Date.now()) / 1000;
+      if(remainingTime <= 0 || expireTime <= 0){
+        this.logout();
+      }
+    }else{
+      this.logout();
+    }
 
     const user = localStorage.getItem('user');
 
     if(user){
       this.store.dispatch(setUser({User: JSON.parse(user)}))
     }
+
 
 
 
