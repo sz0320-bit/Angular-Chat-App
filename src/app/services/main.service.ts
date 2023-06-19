@@ -28,5 +28,15 @@ export class MainService {
     return this.http.patch(`${this.baseUrl}/posts/${id}/like`, {});
   }
 
+  dislikePost(id){
+    return this.http.patch(`${this.baseUrl}/posts/${id}/dislike`, {});
+  }
 
+  removeLike(id){
+    return this.http.patch(`${this.baseUrl}/posts/${id}/removeLike`, {});
+  }
+
+  removeDislike(id){
+    return this.http.patch(`${this.baseUrl}/posts/${id}/removeDislike`, {});
+  }
 }

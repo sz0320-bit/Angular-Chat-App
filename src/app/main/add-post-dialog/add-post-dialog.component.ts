@@ -21,7 +21,7 @@ export class AddPostDialog implements OnInit {
 
   createForm() {
     this.postForm = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(50)]],
+      title: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(25)]],
       description: ['', [Validators.required, Validators.minLength(30), Validators.maxLength(250)]]
     });
   }
