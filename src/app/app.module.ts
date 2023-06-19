@@ -14,6 +14,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { StoreModule } from '@ngrx/store';
 import * as fromGlobal from './reducers/index';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import { httpInterceptorProviders } from './interceptors';
 
 
 
@@ -38,7 +39,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

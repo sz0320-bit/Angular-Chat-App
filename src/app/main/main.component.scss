@@ -1,3 +1,23 @@
+@import '../../variables';
+
+
 .page{
   @apply w-full h-full flex justify-center items-center border-blue-500 bg-neutral-800 ;
+}
+
+.fab-main {
+  position: fixed;
+  right: 1.5em;
+  bottom: 1.5em;
+}
+
+.example-header-image{
+  background-image: url('../../assets/default-pfp.png');
+  background-size: cover;
+  border: 1px solid;
+  border-color: $accent;
+}
+
+.subtitle{
+  color: $accent;
 }

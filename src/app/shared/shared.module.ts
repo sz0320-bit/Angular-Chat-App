@@ -50,6 +50,7 @@ import {MatProgressBar, MatProgressBarModule} from "@angular/material/progress-b
     MatRippleModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatDialogModule,
     MatInputModule,
     MatCardModule,
     MatGridListModule,

@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit{
             localStorage.setItem('refreshToken', result.body.refresh_token);
             localStorage.setItem('refresh_in', result.body.refresh_in);
             localStorage.setItem('expires_in', result.body.expires_in);
-            this.router.navigate(['/']);
+            this.router.navigate(['posts']);
           }
         },
         error: result => {

@@ -1,6 +1,6 @@
 <div class="h-full w-full">
 
-  <div *ngIf="(user$ | async); else nonAuthView" class="w-full  flex-col flex h-full bg-neutral-800 ">
+  <div *ngIf="(user$ | async); else nonAuthView" class="w-full overflow-x-hidden flex-col flex h-full bg-neutral-800 ">
     <div class="w-full h-[5em] toolbar">
       <mat-toolbar color="primary" class="min-h-full">
         <button (click)="drawer.toggle()" mat-icon-button class="example-icon"
@@ -26,6 +26,8 @@
 
 
     </div>
+    <!-- <mat-progress-bar  class="min-w-[110%]" mode="indeterminate" color="accent"></mat-progress-bar> -->
+
     <mat-drawer-container class=" h-full drawer-maincontainer ">
       <mat-drawer class="drawer-class  p-2 pr-0  " #drawer
                   [mode]="getScreenWidth < 600 ? 'over' : 'side'">

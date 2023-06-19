@@ -4,6 +4,7 @@ import {MainComponent} from './main.component';
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
 import { PostComponent } from './post/post.component';
+import { AddPostDialog } from './add-post-dialog/add-post-dialog.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     MainComponent,
-    PostComponent
+    PostComponent,
+    AddPostDialog,
   ],
   imports: [
     CommonModule,
