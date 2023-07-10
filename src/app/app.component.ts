@@ -2,13 +2,18 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {getUserState, State} from "./reducers";
 import {Store} from "@ngrx/store";
 import {setUser} from "./reducers/user-reducer/user.actions";
-import {Router} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
+import { slideInAnimation } from './animation-util/post-comment.animation';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [
+    slideInAnimation
+    //...
+  ]
 })
 
 export class AppComponent implements OnInit{
@@ -22,6 +27,10 @@ export class AppComponent implements OnInit{
   constructor(private store: Store<State>, private router: Router) {
   }
 
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
   async ngOnInit() {
 
 
@@ -29,23 +38,6 @@ export class AppComponent implements OnInit{
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
 
-    // const localExpirationTime = localStorage.getItem('expirationTime');
-    // const expirationTime = new Date(localExpirationTime);
-    // if (localExpirationTime) {
-    //   // console.log('exp', expirationTime);
-    //   const currentTime = Date.now();
-    //   const remainingTime = (expirationTime.getTime() - currentTime) / 1000;
-    //
-    //   if (remainingTime <= 0) {
-    //     // console.log('checker');
-    //     this.snackbar.open('Session Expired, Please Login Again', 'dismiss');
-    //     this.logout();
-    //   } else {
-    //     // console.log(remainingTime);
-    //
-    //     this.startSessionExpiryCountdown(remainingTime);
-    //   }
-    // }
 
     const accessExpireTime = localStorage.getItem('refresh_in');
     const refreshExpireTime = localStorage.getItem('expires_in');

@@ -5,11 +5,13 @@ import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
 import { PostComponent } from './post/post.component';
 import { AddPostDialog } from './add-post-dialog/add-post-dialog.component';
+import { ExpandedPostComponent } from './expanded-post/expanded-post/expanded-post.component';
 
 
 const routes: Routes = [
 
-  {path: '', component: MainComponent},
+  {path: '', component: MainComponent, data: {animation: 'Route1'}},
+  {path: ':id', component: ExpandedPostComponent, data: {animation: 'Route2'}}
 
 ];
 
@@ -18,6 +20,7 @@ const routes: Routes = [
   declarations: [
     MainComponent,
     PostComponent,
+    ExpandedPostComponent,
     AddPostDialog,
   ],
   imports: [
