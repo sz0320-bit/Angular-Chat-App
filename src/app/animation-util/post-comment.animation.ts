@@ -11,15 +11,15 @@ export const slideInAnimation =
         })
       ]),
       query(':enter', [
-        style({ left: '100%' })
+        style({ transform: 'translateX(100%)' })  // New screen starts from the right side
       ]),
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('300ms ease-out', style({ left: '-100%'}))
+          animate('100ms ease-out', style({ opacity: 0 }))  // Old screen fades out
         ]),
         query(':enter', [
-          animate('300ms ease-in', style({ left: '0%'}))
+          animate('300ms ease-in', style({ transform: 'translateX(0%)' }))  // New screen moves from right to left
         ])
       ]),
       query(':enter', animateChild()),
@@ -33,15 +33,15 @@ export const slideInAnimation =
         })
       ]),
       query(':enter', [
-        style({ left: '-100%'})
+        style({ transform: 'translateX(-100%)' })  // New screen starts from the left side
       ]),
       query(':leave', animateChild()),
       group([
         query(':leave', [
-          animate('300ms ease-out', style({ left: '100%'}))
+          animate('100ms ease-out', style({ opacity: 0 }))  // Old screen fades out
         ]),
         query(':enter', [
-          animate('300ms ease-in', style({ left: '0%'}))
+          animate('300ms ease-in', style({ transform: 'translateX(0%)' }))  // New screen moves from left to right
         ])
       ]),
       query(':enter', animateChild()),

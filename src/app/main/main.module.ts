@@ -6,6 +6,7 @@ import {SharedModule} from "../shared/shared.module";
 import { PostComponent } from './post/post.component';
 import { AddPostDialog } from './add-post-dialog/add-post-dialog.component';
 import { ExpandedPostComponent } from './expanded-post/expanded-post/expanded-post.component';
+import { SkeletonPostComponent } from './expanded-post/expanded-post/skeleton-post/skeleton-post/skeleton-post.component';
 
 
 const routes: Routes = [
@@ -20,8 +21,10 @@ const routes: Routes = [
   declarations: [
     MainComponent,
     PostComponent,
+    SkeletonPostComponent,
     ExpandedPostComponent,
     AddPostDialog,
+    SkeletonPostComponent,
   ],
   imports: [
     CommonModule,

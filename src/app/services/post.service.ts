@@ -20,6 +20,10 @@ export class MainService {
     return this.http.get(`${this.baseUrl}/posts`);
   }
 
+  getPostById(id: number){
+    return this.http.get(`${this.baseUrl}/posts/${id}`);
+  }
+
   addPost(description: string, title: string): Observable<any>{
     return this.http.post(`${this.baseUrl}/posts`, {desc: description, title: title});
   }
@@ -38,5 +42,9 @@ export class MainService {
 
   removeDislike(id){
     return this.http.patch(`${this.baseUrl}/posts/${id}/removeDislike`, {});
+  }
+
+  addComment(postId, message){
+    return this.http.post(`${this.baseUrl}/comments`, {postId: postId, message: message});
   }
 }

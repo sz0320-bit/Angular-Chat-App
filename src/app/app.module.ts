@@ -15,6 +15,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromGlobal from './reducers/index';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { httpInterceptorProviders } from './interceptors';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 
@@ -28,6 +29,7 @@ import { httpInterceptorProviders } from './interceptors';
     BrowserAnimationsModule,
     SharedModule,
     LayoutModule,
+    NgxSkeletonLoaderModule.forRoot({ animation: 'pulse', loadingText: 'This item is actually loading...' }),
     RouterModule,
     AppRoutingModule,
     StoreModule.forRoot(fromGlobal.reducers, { metaReducers: fromGlobal.metaReducers , }),

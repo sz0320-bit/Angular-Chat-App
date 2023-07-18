@@ -1,0 +1,30 @@
+<mat-card class="w-full">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <ngx-skeleton-loader [theme]="{
+          'background-color': '#3b3939',
+        }" count="1" class="w-full h-full" appearance="circle">
+        </ngx-skeleton-loader>
+      </div>
+      <mat-card-title>
+        <ngx-skeleton-loader count="1" class="w-fit" appearance="line">
+        </ngx-skeleton-loader>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <span class="subtitle">
+          <ngx-skeleton-loader count="1" appearance="line">
+          </ngx-skeleton-loader>
+        </span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <ngx-skeleton-loader count="3" 
+        [theme]="{
+          'background-color': '#3b3939',
+        }"
+        appearance="line">
+        </ngx-skeleton-loader>
+      </p>
+    </mat-card-content>
+  </mat-card>

@@ -28,6 +28,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatProgressBar, MatProgressBarModule} from "@angular/material/progress-bar";
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {MatProgressBar, MatProgressBarModule} from "@angular/material/progress-b
     MatSelectModule,
     MatAutocompleteModule,
     MatSlideToggleModule,
+    NgxSkeletonLoaderModule.forRoot({ animation: 'progress-dark', loadingText: 'This item is actually loading...' }),
     MatCheckboxModule,
     MatDividerModule,
     MatTableModule,
@@ -96,6 +98,7 @@ import {MatProgressBar, MatProgressBarModule} from "@angular/material/progress-b
     MatSlideToggleModule,
     MatCheckboxModule,
     MatDividerModule,
+    NgxSkeletonLoaderModule,
     MatTableModule,
     MatChipsModule,
     MatSnackBarModule,

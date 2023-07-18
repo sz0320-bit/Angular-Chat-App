@@ -1,1 +1,71 @@
-<p>expanded-post works!</p>
+<div class="page">
+  <div class="w-full h-full flex flex-col  p-3">
+    <mat-card class="w-full">
+        <div class="w-full flex flex-row justify-between p-1 border-b-2 border-b-gray-500">
+            <button mat-icon-button [routerLink]="['/posts']">
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>more_vert</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+    <app-skeleton-post *ngIf="loading()"></app-skeleton-post>
+    <mat-card *ngIf="!loading()" class="w-full">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ post().title }}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="subtitle">
+              {{ post().username }}
+            </span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            {{ post().description }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="flex justify-between sm:justify-start">
+          <div class="w-fit">
+            <button type="button" [color]="isLikedByUser(post()) && 'accent'" (click)="likePost(post().id)" mat-icon-button>
+              <mat-icon> thumb_up </mat-icon>
+            </button>
+            <button mat-icon-button [color]="isDisikedByUser(post()) && 'warn'" type="button" (click)="dislikePost(post().id)">
+              <mat-icon> thumb_down </mat-icon>
+            </button>
+          </div>
+  
+          <button mat-button color="accent" >COMMENT</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card  class="w-full">
+        <div class="w-full flex gap-3 border-t-2 border-t-gray-500 p-3 items-center">
+            <mat-form-field id="comment-input" class="w-full">
+                <mat-label>Comment</mat-label>
+                <input class="w-full" [formControl]="commentControl" matInput type="text"/>
+                <button (click)="addComment()" *ngIf="commentControl.valid" mat-icon-button matSuffix color="accent">
+                    <mat-icon >send</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </mat-card>
+
+    <div class="w-full mt-3  flex flex-col gap-3">
+        <mat-card *ngFor="let comment of post().comments" class="w-full">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-subtitle>
+                <span class="subtitle">
+                  {{ comment.username }}
+                </span>
+              </mat-card-subtitle>
+              <mat-card-title>
+                 <h3>{{ comment.message }}</h3>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+  </div>
+</div>

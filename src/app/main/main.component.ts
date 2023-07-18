@@ -1,7 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPostDialog } from './add-post-dialog/add-post-dialog.component';
-import { MainService } from '../services/main.service';
+import { MainService } from '../services/post.service';
 import { catchError, of, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -17,6 +17,7 @@ export class MainComponent implements OnInit {
   user = this.store.select(getUserState);
   userId;
   username;
+  loading = signal(false);
   constructor(
     private dialog: MatDialog,
     private mainService: MainService,
@@ -41,6 +42,7 @@ export class MainComponent implements OnInit {
   }
 
   fetchInitialData() {
+    this.loading.set(true);
     this.mainService
       .getPosts()
       .pipe(
@@ -52,10 +54,12 @@ export class MainComponent implements OnInit {
               duration: 3000,
             }
           );
+          this.loading.set(false);
           return err;
         }),
         tap((value) => {
           console.log(value);
+          this.loading.set(false);
           this.posts.set(value as any);
         })
       )

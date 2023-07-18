@@ -38,7 +38,7 @@
 
       <mat-drawer-content class="">
 
-        <div [@routeAnimations]="prepareRoute(outlet)" class="w-full bg-neutral-800 p-2 h-full router-nav">
+        <div [@routeAnimations]="prepareRoute(outlet)" class="w-full bg-neutral-800 p-2 h-full router-nav overflow-x-hidden">
           <router-outlet #outlet="outlet"></router-outlet>
         </div>
 
